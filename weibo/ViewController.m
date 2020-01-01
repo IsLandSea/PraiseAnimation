@@ -9,6 +9,8 @@
 #import "ViewController.h"
 #import "UIView+Extension.h"
 #import "PraiseView.h"
+#import "PraiseView.h"
+
 @interface ViewController ()
 @property (nonatomic,strong)UIButton *praiseBtn;
 @property (nonatomic,strong)PraiseView *prasieView;

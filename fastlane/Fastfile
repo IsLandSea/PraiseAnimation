@@ -16,11 +16,20 @@
 default_platform(:ios)
 
 platform :ios do
-  desc "Description of what the lane does"
-  lane :custom_lane do
-    # add actions here: https://docs.fastlane.tools/actions
-  end
-lane :beta do
-  build_app(export_method: "development")
-end
+  desc "Submit a new Beta Build to Pgy"
+lane :pgy do
+  match(type: "development", app_identifier: "cn.kuwo.jenkins", readonly: true)
+  gym(
+    scheme: "weibo",
+    silent: true,  # 是否隐藏打包时不需要的信息
+    configuration: 'Debug', # 指定打包时的配置项，默认为Release 
+    export_method: "development", # 指定导出.ipa时使用的方法，可用选项：app-store, ad-hoc, package, enterprise, development, developer-id
+    export_options: {
+      provisioningProfiles: {
+        "cn.kuwo.jenkins" => "match development cn.kuwo.jenkins"
+      }
+    }
+  )
+  pgyer(api_key: "3db0ca43c33b64787067cea09790b880", user_key: "79191f4bcd759aa4087a32abcd9878dc")
+end  end
 end

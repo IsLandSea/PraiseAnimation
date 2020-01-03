@@ -18,7 +18,7 @@ default_platform(:ios)
 platform :ios do
   desc "Submit a new Beta Build to Pgy"
 lane :pgy do
-  match(type: "development", app_identifier: "cn.kuwo.jenkins", readonly: true)
+  match(type: "development", app_identifier: "cn.kuwo.JuXin", readonly: true)
   gym(
     scheme: "weibo",
     silent: true,  # 是否隐藏打包时不需要的信息
@@ -26,7 +26,7 @@ lane :pgy do
     export_method: "development", # 指定导出.ipa时使用的方法，可用选项：app-store, ad-hoc, package, enterprise, development, developer-id
     export_options: {
       provisioningProfiles: {
-        "cn.kuwo.jenkins" => "match development cn.kuwo.jenkins"
+        "cn.kuwo.JuXin" => "match development cn.kuwo.JuXin"
       }
     }
   )
